@@ -70,7 +70,7 @@ const Home = () => {
           <div className="mt-5 flex items-center justify-center gap-x-6 mb-20">
             <button
               onClick={logoutUser}
-              className="rounded-md bg-sky-700 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+              className="rounded-md bg-sky-700 px-3.5 py-2.5 text-sm font-medium text-white shadow-sm hover:bg-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
             >
               Logout →
             </button>

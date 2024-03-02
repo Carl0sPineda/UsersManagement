@@ -26,7 +26,9 @@ const Login = () => {
   return (
     <main className="mx-auto flex min-h-screen w-full items-center justify-center bg-gray-900 text-white">
       <section className="flex w-[30rem] flex-col space-y-10">
-        <h1 className="text-center text-4xl font-medium">User Managements</h1>
+        <h1 className="text-center text-5xl font-abhaya font-bold">
+          Users Management
+        </h1>
         <div className="w-full">
           <form
             onSubmit={handleSubmit(onSubmit)}
@@ -54,7 +56,7 @@ const Login = () => {
             </div>
             <button
               type="submit"
-              className="transform rounded-sm bg-indigo-600 py-2 font-bold duration-300 hover:bg-indigo-800"
+              className="transform rounded-sm bg-indigo-700 py-2 duration-300 hover:bg-indigo-800 font-bold"
             >
               Login
             </button>

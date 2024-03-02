@@ -1,3 +1,16 @@
+@import url("../src/assets/fonts/fonts.css");
+
+ :root {
+    --ff-roboto: "Roboto", serif;
+  }
+
+  body {
+    font-family: var(--ff-roboto);
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+

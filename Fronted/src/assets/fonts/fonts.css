@@ -1,0 +1,59 @@
+/**
+ * ABHAYA FONT
+ */
+ @font-face {
+  font-family: 'Abhaya';
+  src: local('Abhaya Regular'), local('Abhaya-Regular') format('woff2'),
+      url('./abhaya/Abhaya-Regular.woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+ @font-face {
+  font-family: 'Abhaya';
+  src: local('Abhaya Bold'), local('Abhaya-Bold') format('woff2'),
+      url('./abhaya/Abhaya-Bold.woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/**
+ * ROBOTO FONT
+ */
+ @font-face {
+  font-family: 'Roboto';
+  src: local('Roboto Thin'), local('Roboto-Thin'),
+      url('./roboto/Roboto-Thin.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+ @font-face {
+  font-family: 'Roboto';
+  src: local('Roboto Regular'), local('Roboto-Regular'),
+      url('./roboto/Roboto-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+ @font-face {
+  font-family: 'Roboto';
+  src: local('Roboto Medium'), local('Roboto-Medium'),
+      url('./roboto/Roboto-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+ @font-face {
+  font-family: 'Roboto';
+  src: local('Roboto Bold'), local('Roboto-Bold'),
+      url('./roboto/Roboto-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}

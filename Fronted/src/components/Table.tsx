@@ -7,19 +7,18 @@ const Table = () => {
     <table className="table-auto w-full text-left whitespace-no-wrap">
       <thead>
         <tr>
-          <th className="px-4 py-3 title-font tracking-wider font-bold text-gray-200 text-sm bg-gray-500">
+          <th className="px-4 py-3 title-font tracking-wider font-bold text-gray-100 text-sm bg-slate-500">
             Username
           </th>
-          <th className="px-4 py-3 title-font tracking-wider font-bold text-gray-200 text-sm bg-gray-500">
+          <th className="px-4 py-3 title-font tracking-wider font-bold text-gray-100 text-sm bg-slate-500">
             Email
           </th>
-          <th className="px-4 py-3 title-font tracking-wider font-bold text-gray-200 text-sm bg-gray-500">
+          <th className="px-4 py-3 title-font tracking-wider font-bold text-gray-100 text-sm bg-slate-500">
             Role
           </th>
-          <th className="px-4 text-center py-3 title-font tracking-wider font-bold text-gray-200 text-sm bg-gray-500">
+          <th className="px-4 text-center py-3 title-font tracking-wider font-bold text-gray-100 text-sm bg-slate-500">
             Actions
           </th>
-          <th className="w-10 title-font tracking-wider font-bold text-gray-200 text-sm bg-gray-500 rounded-tr rounded-br" />
         </tr>
       </thead>
       <tbody>
