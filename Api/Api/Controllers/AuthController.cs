@@ -84,12 +84,14 @@ namespace Api.Controllers
         }
 
         // Route -> getting data of a user from it's JWT
-        [HttpPost]
+        [HttpGet]
         [Route("me")]
-        public async Task<ActionResult<LoginServiceResponseDto>> Me([FromBody] MeDto token)
+        public async Task<ActionResult<LoginServiceResponseDto>> Me()
         {
             try
             {
+                string token = HttpContext.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
+
                 var me = await _authService.MeAsync(token);
                 if (me is not null)
                 {

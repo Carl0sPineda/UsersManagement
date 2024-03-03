@@ -206,35 +206,39 @@ namespace Api.Core.Services
             }
         }
 
-        public async Task<LoginServiceResponseDto?> MeAsync(MeDto meDto)
+        public async Task<MeResponse?> MeAsync(string token)
         {
-            ClaimsPrincipal handler = new JwtSecurityTokenHandler().ValidateToken(meDto.Token, new TokenValidationParameters()
+            try
             {
-                ValidateIssuer = true,
-                ValidateAudience = true,
-                ValidIssuer = _configuration["JWT:ValidIssuer"],
-                ValidAudience = _configuration["JWT:ValidAudience"],
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]))
-            }, out SecurityToken securityToken);
+                ClaimsPrincipal handler = new JwtSecurityTokenHandler().ValidateToken(token, new TokenValidationParameters()
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidIssuer = _configuration["JWT:ValidIssuer"],
+                    ValidAudience = _configuration["JWT:ValidAudience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]))
+                }, out SecurityToken securityToken);
 
-            string decodedUserName = handler.Claims.First(q => q.Type == ClaimTypes.Name).Value;
-            if (decodedUserName is null)
-                return null;
+                string decodedUserName = handler.Claims.First(q => q.Type == ClaimTypes.Name).Value;
+                if (decodedUserName is null)
+                    return null;
 
-            var user = await _userManager.FindByNameAsync(decodedUserName);
-            if (user is null)
-                return null;
+                var user = await _userManager.FindByNameAsync(decodedUserName);
+                if (user is null)
+                    return null;
 
-            var newToken = await GenerateJWTTokenAsync(user);
-            var roles = await _userManager.GetRolesAsync(user);
-            var userInfo = GenerateUserInfoObject(user, roles);
-            await _logService.SaveNewLog(user.UserName, "New Token Generated");
+                var roles = await _userManager.GetRolesAsync(user);
+                var userInfo = GenerateUserInfoObject(user, roles);
 
-            return new LoginServiceResponseDto()
+                return new MeResponse()
+                {
+                  UserInfo = userInfo
+                };
+            }
+            catch (Exception)
             {
-                UserInfo = userInfo,
-                Token = newToken
-            };
+                return null;
+            }
         }
 
         public async Task<IEnumerable<UserInfoResult>> GetUsersListAsync()
