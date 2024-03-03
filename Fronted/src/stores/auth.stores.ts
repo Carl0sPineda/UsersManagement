@@ -6,29 +6,30 @@ import { AuthService } from "../api/services/auth.service";
 export interface AuthState {
   token?: string;
   user?: UserInfo;
+  isAuth?: boolean;
 
   loginUser: (userName: string, password: string) => Promise<void>;
   logoutUser: () => void;
 }
 
 const storeApi: StateCreator<AuthState> = (set) => ({
-  // Obtener el estado como segundo argumento de storeApi
   token: undefined,
   user: undefined,
+  isAuth: undefined,
 
   loginUser: async (userName: string, password: string) => {
     try {
       const { token, userInfo } = await AuthService.login(userName, password);
       const user: UserInfo = userInfo;
-      set({ token, user });
+      set({ token, user, isAuth: true });
     } catch (error) {
-      set({ token: undefined, user: undefined });
+      set({ token: undefined, user: undefined, isAuth: undefined });
       throw "Unauthorized";
     }
   },
 
   logoutUser: () => {
-    set({ token: undefined, user: undefined });
+    set({ token: undefined, user: undefined, isAuth: undefined });
   },
 });
 
