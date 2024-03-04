@@ -1,24 +1,13 @@
-// import { useForm } from "react-hook-form";
 import { useAuthStore } from "../stores/auth.stores";
-// import { AuthService } from "../api/services/auth.service";
-// import { UpdateRole } from "../interfaces/user.interface";
 import Table from "../components/Table";
 
 const Home = () => {
   const { user } = useAuthStore();
-  // const { register, handleSubmit, reset } = useForm<UpdateRole>();
   const authOwner = !!user?.roles.includes("OWNER");
   const logoutUser = useAuthStore((state) => state.logoutUser);
 
-  // const onSubmit = async (data: UpdateRole) => {
-  //   try {
-  //     await AuthService.updateRole(data);
-  //     reset();
-  //   } catch (error) {}
-  // };
-
   return (
-    <div className="relative isolate overflow-hidden bg-gray-900 h-dvh">
+    <div className="relative isolate overflow-hidden overflow-y-auto bg-gray-900 h-dvh">
       <svg
         className="absolute inset-0 -z-10 h-full w-full stroke-white/10 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
         aria-hidden="true"
@@ -60,14 +49,14 @@ const Home = () => {
           }}
         ></div>
       </div>
-      <div className="mt-[-50px] flex h-screen items-center justify-center">
+      <div className="mt-[40px] flex h-screen items-center justify-center">
         <div className="max-w-full flex-shrink-0 px-4 text-center lg:mx-0 lg:max-w-3xl lg:pt-8">
           <h1 className="mt-10 text-5xl font-bold tracking-tight text-white sm:text-6xl">
             Welcome,{" "}
             <span className="lowercase text-gray-300">{user?.roles}</span>
             <span className="text-sky-500 ml-4">{user?.userName}</span>
           </h1>
-          <div className="mt-5 flex items-center justify-center gap-x-6 mb-20">
+          <div className="mt-5 flex items-center justify-center gap-x-6">
             <button
               onClick={logoutUser}
               className="rounded-md bg-sky-700 px-3.5 py-2.5 text-sm font-medium text-white shadow-sm hover:bg-sky-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
@@ -75,7 +64,7 @@ const Home = () => {
               Logout →
             </button>
           </div>
-          {authOwner && <Table />}
+          <div className="mt-12 mb-12">{authOwner && <Table />}</div>
         </div>
       </div>
     </div>

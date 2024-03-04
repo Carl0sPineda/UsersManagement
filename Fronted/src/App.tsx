@@ -5,13 +5,11 @@ import Home from "./pages/Home";
 import PrivateRoutes from "./utils/PrivateRoute";
 import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
-// import Header from "./pages/Header";
 
 function App() {
   return (
     <>
       <Router>
-        {/* <Header /> */}
         <Routes>
           {/* PUBLIC ROUTES */}
           <Route path="/login" element={<Login />} />

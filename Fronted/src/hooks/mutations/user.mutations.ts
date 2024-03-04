@@ -11,4 +11,14 @@ const useRegisterUser = () => {
   });
 };
 
-export { useRegisterUser };
+const useUpdateRole = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: AuthService.updateRole,
+    onSuccess() {
+      queryClient.invalidateQueries({ queryKey: ["users"] });
+    },
+  });
+};
+
+export { useRegisterUser, useUpdateRole };
